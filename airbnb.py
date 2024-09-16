@@ -73,8 +73,9 @@ st.markdown("""
             <h1 style="color: purple;">AIRBNB DATA ANALYSIS</h1>
         </div>
     """, unsafe_allow_html=True)
+
 with st.sidebar:
-    select=st.selectbox("Select an Option",["Home","Data Exploration by chart","Data Exploration by Table"])
+    select=st.selectbox("Select an Option",["Home","Data Exploration by chart","Data Exploration by Table","Analysis Report"])
 
 #Home page
 if select=="Home":
@@ -125,3 +126,13 @@ elif select == "Data Exploration by Table":
     area_table=rwtable[rwtable["neighborhood"]==area]
     areaTable_selected=area_table[['neighborhood','availabitily','minimun_nights']]
     st.dataframe(areaTable_selected)
+
+elif select == "Analysis Report":
+
+    # Title for the app
+    st.title("Power BI Report in Streamlit")
+
+    # Embed Power BI report using an iframe
+    powerbi_url = "https://app.powerbi.com/reportEmbed?reportId=cfcd6898-b303-44e5-b8e3-3d02d30fc079&autoAuth=true&ctid=de72fe03-2c2e-4d82-8388-caed97e2d767"
+
+    st.markdown(f'<iframe width="1140" height="600" src="{powerbi_url}" frameborder="0" allowFullScreen="true"></iframe>', unsafe_allow_html=True)
